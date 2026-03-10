@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Portfolio</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="/style.css?v=2">
+</head>
+    <title>Data Science Portfolio</title>
+
+    <!-- Google Font Added -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="themeToggle" class="theme-toggle">🌙</button>
+
+<header class="hero">
+    <div class="hero-content">
+        <img src="profile.jpg" alt="Profile Photo" class="profile-pic">
+        <h1>Mukund M Pillai</h1>
+        <p>BSc Data Science | MySQL | Python | C</p>
+        <p>Passionate about Data Analytics & Database Systems</p>
+    </div>
+</header>
+
+<section>
+    <h2>About Me</h2>
+    <p>
+        I am a BSc Data Science student skilled in MySQL, Python, and C programming.
+        I enjoy building database-driven applications and conducting data workshops.
+    </p>
+</section>
+
+<section>
+    <h2>Technical Skills</h2>
+    <div class="skills">
+        <div class="skill-card">MySQL</div>
+        <div class="skill-card">Python</div>
+        <div class="skill-card">C Programming</div>
+        <div class="skill-card">Data Analysis</div>
+        <div class="skill-card">Database Design</div>
+    </div>
+</section>
+
+<section>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <h3>MySQL Data Workshop</h3>
+            <p>Conducted a hands-on workshop teaching SQL queries, joins, normalization, and database design.</p>
+            <p><strong>Tech Used:</strong> MySQL, SQL</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Student Database Management System</h3>
+            <p>Built a database-driven application to manage student records, attendance, and grades.</p>
+            <p><strong>Tech Used:</strong> MySQL, Node.js</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Data Analysis with Python</h3>
+            <p>Performed exploratory data analysis and visualization using Pandas and Matplotlib.</p>
+            <p><strong>Tech Used:</strong> Python</p>
+        </div>
+
+    </div>
+</section>
+    <div id="projects" class="projects-grid"></div>
+</section>
+
+<section>
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+    <p id="response"></p>
+</section>
+
+<footer>
+    <p>© 2026 Mukund M Pillai | Data Science Portfolio</p>
+</footer>
+
+<script>
+async function loadProjects() {
+    const res = await fetch("/projects");
+    const projects = await res.json();
+
+    let output = "";
+    projects.forEach(p => {
+        output += `
+            <div class="project-card">
+                <h3>${p.title}</h3>
+                <p>${p.description}</p>
+                <p><strong>Tech:</strong> ${p.tech_stack}</p>
+                <a href="${p.github_link}" target="_blank">View Project</a>
+            </div>
+        `;
+    });
+
+    document.getElementById("projects").innerHTML = output;
+}
+
+loadProjects();
+
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
+
+    const res = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    const text = await res.text();
+    document.getElementById("response").innerText = text;
+});
+</script>
+
+</body>
+<script>
+const toggleBtn = document.getElementById("themeToggle");
+
+// Check saved theme
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.innerText = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        toggleBtn.innerText = "☀️";
+    } else {
+        localStorage.setItem("theme", "light");
+        toggleBtn.innerText = "🌙";
+    }
+});
+</script>
+</html>

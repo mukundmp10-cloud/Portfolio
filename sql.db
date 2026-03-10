@@ -1,0 +1,26 @@
+CREATE DATABASE ds_portfolio;
+
+USE ds_portfolio;
+
+CREATE TABLE projects (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150),
+    description TEXT,
+    tech_stack VARCHAR(200),
+    github_link VARCHAR(255)
+);
+
+CREATE TABLE contacts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(150),
+    message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO projects (title, description, tech_stack, github_link)
+VALUES 
+('MySQL Data Workshop',
+ 'Conducted a hands-on workshop on MySQL covering database design, joins, indexing, and query optimization with real-world datasets.',
+ 'MySQL, Database Design, SQL Optimization',
+ 'https://github.com/yourusername/mysql-workshop');

@@ -1,0 +1,219 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #ff3cac, #784ba0, #2b86c5, #00c9ff);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    color: white;
+    text-align: center;
+}
+
+/* Animated gradient */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hero Section */
+.hero {
+    padding: 60px 20px 30px;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 6px solid white;
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 44px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+/* Section */
+section {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* Skills */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.skill-card {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding: 18px 35px;
+    border-radius: 40px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: 0.4s;
+}
+
+.skill-card:hover {
+    background: white;
+    color: #784ba0;
+    transform: scale(1.15);
+}
+
+/* Projects */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+}
+
+.project-card {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    width: 320px;
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: 0.4s;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.project-card:hover {
+    transform: translateY(-15px) scale(1.05);
+    background: white;
+    color: #333;
+}
+
+.project-card a {
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ff3cac;
+}
+
+/* Contact */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+input, textarea {
+    width: 75%;
+    max-width: 500px;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+textarea {
+    height: 120px;
+}
+
+button {
+    padding: 15px 40px;
+    border-radius: 40px;
+    border: none;
+    background: white;
+    color: #784ba0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+button:hover {
+    background: #ff3cac;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    padding: 40px 20px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+    color: #f1f1f1;
+}
+
+.dark-mode .project-card {
+    background: rgba(0,0,0,0.6);
+    color: white;
+}
+
+.dark-mode .skill-card {
+    background: rgba(0,0,0,0.5);
+    color: white;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+    background: #333;
+    color: white;
+}
+
+.dark-mode button {
+    background: #222;
+    color: white;
+}
+
+.dark-mode button:hover {
+    background: #444;
+}
